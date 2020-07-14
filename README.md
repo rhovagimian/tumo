@@ -1,6 +1,6 @@
 # TUMO - Introduction to GraphQL, Relay, React Workshop
 
-######Agenda
+###### Agenda
 
 1. GraphQL Introduction
 2. GraphQL Queries/Mutation
