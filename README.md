@@ -1,5 +1,5 @@
 # TUMO - Introduction to GraphQL, Relay, React Workshop
-
+![TUMO From Home](./resources/tumo-graphql.png)
 ###### Agenda
 
 1. GraphQL Introduction
