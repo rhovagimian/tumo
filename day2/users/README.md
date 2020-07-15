@@ -1,3 +1,5 @@
 # tumo
 
-Day 1 Users
+Day 2 Users
+
+GraphQL Queries & Mutations
