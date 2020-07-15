@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "23",
+      "firstName": "Raffi",
+      "age": 35,
+      "companyId": "1"
+    },
+    {
+      "id": "40",
+      "firstName": "Alex",
+      "age": 39,
+      "companyId": "2"
+    },
+    {
+      "id": "41",
+      "firstName": "Aram",
+      "age": 40,
+      "companyId": "2"
+    },
+    {
+      "firstName": "Vrej",
+      "age": 6,
+      "id": "aNfTVU7"
+    },
+    {
+      "firstName": "Alex",
+      "age": 40,
+      "id": "81pAjJJ"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "Facebook",
+      "description": "social media"
+    },
+    {
+      "id": "2",
+      "name": "Google",
+      "description": "search"
+    }
+  ]
+}
