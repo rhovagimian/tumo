@@ -1,7 +1,13 @@
 //@ts-check
 const graphql = require("graphql");
-const { GraphQLList, GraphQLNonNull } = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema } = graphql;
+const {
+  GraphQLList,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLSchema,
+} = graphql;
 const axios = require("axios").default;
 
 const CompanyType = new GraphQLObjectType({
