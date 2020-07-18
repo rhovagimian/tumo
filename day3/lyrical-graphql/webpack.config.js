@@ -3,6 +3,7 @@ const webpack = require("./node_modules/webpack");
 const HtmlWebpackPlugin = require("./node_modules/html-webpack-plugin");
 
 module.exports = {
+  mode: "development",
   entry: "./client/index.js",
   output: {
     path: "/",
@@ -11,7 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
-        use: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
         test: /\.js$/,
         exclude: /node_modules/,
       },
