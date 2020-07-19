@@ -5,10 +5,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StephenGrider/Lyrical-GraphQL"
+    "url": "https://github.com/rhovagimian/lyrical-graphql"
   },
   "scripts": {
-    "dev": "nodemon index.js --ignore client"
+    "dev": "nodemon index.js --ignore client",
+    "create-schema": "node ./server/schema/schema.js",
+    "relay": "npm run create-schema && relay-compiler --src ./ --schema ./server/schema/schema.graphql"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +21,6 @@
     "express": "^4.17.1",
     "express-graphql": "^0.11.0",
     "express-session": "^1.17.1",
-    "graphql": "^15.3.0",
     "lodash": "^4.17.19",
     "mongoose": "^5.9.25",
     "nodemon": "^2.0.4",
@@ -27,6 +28,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-relay": "^10.0.0",
     "react-router": "^5.2.0"
   },
   "devDependencies": {
@@ -34,8 +36,12 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "babel-plugin-relay": "^10.0.0",
     "css-loader": "^3.6.0",
+    "graphql": "^15.3.0",
     "html-webpack-plugin": "^4.3.0",
+    "relay-compiler": "^10.0.0",
+    "relay-config": "^10.0.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-dev-middleware": "^3.7.2"

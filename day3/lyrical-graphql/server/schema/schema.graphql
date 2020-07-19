@@ -1,0 +1,30 @@
+schema {
+  query: RootQueryType
+  mutation: Mutation
+}
+
+type RootQueryType {
+  songs: [SongType]
+  song(id: ID!): SongType
+  lyric(id: ID!): LyricType
+}
+
+type SongType {
+  id: ID
+  title: String
+  lyrics: [LyricType]
+}
+
+type LyricType {
+  id: ID
+  likes: Int
+  content: String
+  song: SongType
+}
+
+type Mutation {
+  addSong(title: String): SongType
+  addLyricToSong(content: String, songId: ID): SongType
+  likeLyric(id: ID): LyricType
+  deleteSong(id: ID): SongType
+}
