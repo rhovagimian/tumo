@@ -10,7 +10,7 @@ const LyricType = new GraphQLObjectType({
     likes: { type: GraphQLInt },
     content: { type: GraphQLString },
     song: {
-      type: require("./song_type"),
+      type: require("./SongType"),
       resolve(parentValue) {
         return Lyric.findById(parentValue)
           .populate("song")

@@ -1,3 +1,3 @@
 //@ts-check
-require("./song");
-require("./lyric");
+require("./SongModel");
+require("./LyricModel");

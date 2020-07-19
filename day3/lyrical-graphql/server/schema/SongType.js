@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = graphql;
-const LyricType = require("./lyric_type");
+const LyricType = require("./LyricType");
 const Song = mongoose.model("song");
 
 const SongType = new GraphQLObjectType({
