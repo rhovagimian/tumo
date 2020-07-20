@@ -2,8 +2,7 @@
 const mongoose = require("mongoose");
 
 // Replace with your Mongodb URI
-const MONGO_URI =
-  "mongodb+srv://dbUser:ITrvnUU4RvboACp6@cluster0.va4e7.mongodb.net/lyricaldb?retryWrites=true&w=majority";
+const MONGO_URI = "";
 if (!MONGO_URI) {
   throw new Error("You must provide a MongoDB URI");
 }
