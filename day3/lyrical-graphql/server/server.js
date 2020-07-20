@@ -19,6 +19,7 @@ app.use(
   })
 );
 
+// @ts-ignore
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
 module.exports = app;

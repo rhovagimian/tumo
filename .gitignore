@@ -11,8 +11,8 @@ yarn-error.log*
 lerna-debug.log*
 .DS_Store
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
+# Relay generated files
+__generated__/
 
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
