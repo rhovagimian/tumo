@@ -1,6 +1,7 @@
 //@ts-check
 import React from "react";
 import { QueryRenderer, graphql } from "react-relay";
+import { Link } from "react-router-dom";
 import environment from "../relay/environment";
 
 const query = graphql`
@@ -21,7 +22,14 @@ const renderQuery = ({ error, props }) => {
       {song.title}
     </li>
   ));
-  return <ul className="collection">{titles}</ul>;
+  return (
+    <div>
+      <ul className="collection">{titles}</ul>
+      <Link to="songs/new" className="btn-floating btn-large red right">
+        <i className="material-icons">add</i>
+      </Link>
+    </div>
+  );
 };
 
 function SongList() {

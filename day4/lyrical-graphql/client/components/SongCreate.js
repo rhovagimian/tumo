@@ -1,6 +1,7 @@
 //@ts-check
 import React, { useState } from "react";
 import { graphql, commitMutation } from "react-relay";
+import { Link, useHistory } from "react-router-dom";
 import environment from "../relay/environment";
 
 const mutation = graphql`
@@ -14,6 +15,7 @@ const mutation = graphql`
 
 function SongCreate() {
   const [title, onTitleChange] = useState("");
+  const history = useHistory();
   const onSubmit = (event) => {
     event.preventDefault();
     commitMutation(environment, {
@@ -21,10 +23,14 @@ function SongCreate() {
       variables: {
         title,
       },
+      onCompleted: (response, errors) => {
+        history.push("/");
+      },
     });
   };
   return (
     <div>
+      <Link to="/">Back</Link>
       <h3>Create a New Song</h3>
       <form onSubmit={onSubmit}>
         <label>Song Create:</label>

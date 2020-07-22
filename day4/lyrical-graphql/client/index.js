@@ -10,7 +10,7 @@ const Root = () => {
     <div className="container">
       <Router>
         <Switch>
-          <Route path="/song/new">
+          <Route path="/songs/new">
             <SongCreate />
           </Route>
           <Route path="/">
