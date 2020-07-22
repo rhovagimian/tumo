@@ -1,7 +1,7 @@
 //@ts-check
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import SongCreate from "./components/SongCreate";
 import SongList from "./components/SongList";
 
@@ -10,7 +10,7 @@ const Root = () => {
     <div className="container">
       <Router>
         <Switch>
-          <Route path="/song/create">
+          <Route path="/song/new">
             <SongCreate />
           </Route>
           <Route path="/">
