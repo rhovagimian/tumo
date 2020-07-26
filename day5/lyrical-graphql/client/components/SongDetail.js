@@ -1,7 +1,7 @@
 //@ts-check
 import React from "react";
 import { graphql, QueryRenderer } from "react-relay";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import environment from "../relay/environment";
 
 const query = graphql`
@@ -20,6 +20,7 @@ function renderQuery({ error, props }) {
   const { song } = props;
   return (
     <div>
+      <Link to="/">Back</Link>
       <h3>{song.title}</h3>
     </div>
   );

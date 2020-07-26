@@ -41,7 +41,7 @@ const renderQuery = ({ error, props }) => {
     (song) =>
       song && (
         <li key={song.id} className="collection-item">
-          {song.title}
+          <Link to={`/songs/${song.id}`}>{song.title}</Link>
           <i
             className="material-icons"
             onClick={() => {
