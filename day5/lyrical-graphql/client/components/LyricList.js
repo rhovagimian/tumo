@@ -1,12 +1,42 @@
 // @ts-check
 import React from "react";
-import { graphql, createFragmentContainer } from "react-relay";
+import { graphql, createFragmentContainer, commitMutation } from "react-relay";
+import environment from "../relay/environment";
+
+const mutation = graphql`
+  mutation LyricList_Mutation($id: ID) {
+    likeLyric(id: $id) {
+      id
+      likes
+    }
+  }
+`;
+
+const onLike = (id) => {
+  commitMutation(environment, {
+    mutation,
+    variables: {
+      id,
+    },
+  });
+};
 
 function LyricList(props) {
-  const lyricItems = props.song.lyrics.map(({ id, content }) => {
+  const lyricItems = props.song.lyrics.map(({ id, content, likes }) => {
     return (
       <li key={id} className="collection-item">
         {content}
+        <div className="vote-box">
+          {likes}
+          <i
+            className="material-icons"
+            onClick={() => {
+              onLike(id);
+            }}
+          >
+            thumb_up
+          </i>
+        </div>
       </li>
     );
   });
@@ -19,6 +49,7 @@ export default createFragmentContainer(LyricList, {
       lyrics {
         id
         content
+        likes
       }
     }
   `,
