@@ -1,17 +1,46 @@
 //@ts-check
-import React from "react";
-import { graphql, createFragmentContainer } from "react-relay";
+import React, { useCallback } from "react";
+import { graphql, QueryRenderer } from "react-relay";
+import { useParams, Link } from "react-router-dom";
+import environment from "../relay/environment";
+import LyricCreate from "./LyricCreate";
+import LyricList from "./LyricList";
 
-function SongDetail(props) {
-  const { title } = props.song;
-  return <h3>{title}</h3>;
-}
-
-export default createFragmentContainer(SongDetail, {
-  song: graphql`
-    fragment SongDetail_song on SongType {
+const query = graphql`
+  query SongDetail_Query($id: ID!) {
+    song(id: $id) {
       id
       title
+      ...LyricList_song
     }
-  `,
-});
+  }
+`;
+
+const renderQuery = ({ error, props }) => {
+  if (!error && !props) {
+    return <div>Loading...</div>;
+  }
+  const { song } = props;
+  return (
+    <div>
+      <Link to="/">Back</Link>
+      <h3>{song.title}</h3>
+      <LyricList song={song} />
+      <LyricCreate songId={song.id} />
+    </div>
+  );
+};
+
+function SongDetail() {
+  const { id } = useParams();
+  return (
+    <QueryRenderer
+      environment={environment}
+      query={query}
+      variables={{ id }}
+      render={renderQuery}
+    />
+  );
+}
+
+export default SongDetail;

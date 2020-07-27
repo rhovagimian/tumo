@@ -7,9 +7,7 @@ const mutation = graphql`
   mutation LyricCreate_Mutation($content: String, $songId: ID) {
     addLyricToSong(content: $content, songId: $songId) {
       id
-      lyrics {
-        content
-      }
+      ...LyricList_song
     }
   }
 `;
