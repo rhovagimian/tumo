@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import SongCreate from "./components/SongCreate";
-import SongDetail from "./components/SongDetail";
+import SongDetailPage from "./components/SongDetailPage";
 import SongList from "./components/SongList";
 
 const Root = () => {
@@ -16,7 +16,7 @@ const Root = () => {
             <SongCreate />
           </Route>
           <Route path="/songs/:id">
-            <SongDetail />
+            <SongDetailPage />
           </Route>
           <Route path="/">
             <SongList />
