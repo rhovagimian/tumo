@@ -12,11 +12,17 @@ const mutation = graphql`
   }
 `;
 
-const onLike = (id) => {
+const onLike = (id, likes) => {
   commitMutation(environment, {
     mutation,
     variables: {
       id,
+    },
+    optimisticResponse: {
+      likeLyric: {
+        id,
+        likes: likes + 1,
+      },
     },
   });
 };
@@ -31,7 +37,7 @@ function LyricList(props) {
           <i
             className="material-icons"
             onClick={() => {
-              onLike(id);
+              onLike(id, likes);
             }}
           >
             thumb_up
