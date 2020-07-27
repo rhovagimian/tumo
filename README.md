@@ -5,6 +5,5 @@
 1. [GraphQL Introduction](./day1/users/)
 2. [GraphQL Queries/Mutation](./day2/users/)
 3. [Relay Introduction](./day3/lyrical-graphql)
-4. [Advanced Relay Techniques](./day4/lyrical-graphql)
-5. Build an App Together
-6. Finish App
+4. [Relay Mutations](./day4/lyrical-graphql)
+5. [Relay Fragments](./day5/lyrical-graphql)
