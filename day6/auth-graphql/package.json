@@ -1,0 +1,48 @@
+{
+  "name": "auth-graphql",
+  "version": "1.0.0",
+  "description": "Starter pack for an auth-included graphql project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rhovagimian/auth-graphql"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js --ignore client",
+    "build-schema": "node ./scripts/buildSchema.js",
+    "relay": "relay-compiler --src ./ --schema ./server/schema/schema.graphql"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "express-session": "^1.17.1",
+    "graphql": "^15.3.0",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.9.26",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-relay": "^10.0.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-relay": "^10.0.1",
+    "html-webpack-plugin": "^4.3.0",
+    "nodemon": "^2.0.4",
+    "relay-compiler": "^10.0.1",
+    "webpack": "^4.44.0",
+    "webpack-dev-middleware": "^3.7.2"
+  }
+}
