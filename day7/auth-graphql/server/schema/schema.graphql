@@ -1,0 +1,19 @@
+schema {
+  query: RootQueryType
+  mutation: mutation
+}
+
+type RootQueryType {
+  user: UserType
+}
+
+type UserType {
+  id: ID
+  email: String
+}
+
+type mutation {
+  signup(email: String, password: String): UserType
+  logout: UserType
+  login(email: String, password: String): UserType
+}

@@ -5,7 +5,7 @@ const UserType = require("./types/UserType");
 const auth = require("../services/auth");
 
 const mutation = new GraphQLObjectType({
-  name: "Mutation",
+  name: "mutation",
   fields: () => ({
     signup: {
       type: UserType,
