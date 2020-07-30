@@ -1,6 +1,5 @@
 //@ts-check
 const graphql = require("graphql");
-const models = require("../../models");
 const UserType = require("./UserType");
 const { GraphQLObjectType, GraphQLString } = graphql;
 
