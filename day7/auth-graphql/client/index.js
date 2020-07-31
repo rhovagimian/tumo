@@ -1,26 +1,12 @@
 //@ts-check
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
+import App from "./components/App";
 
 const Root = () => {
   return (
     <div className="container">
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/login">
-            <LoginForm />
-          </Route>
-          <Route path="/signup">
-            <SignupForm />
-          </Route>
-          <Route path="/"></Route>
-        </Switch>
-      </Router>
+      <App />
     </div>
   );
 };

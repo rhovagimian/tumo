@@ -1,43 +1,24 @@
 //@ts-check
 import React from "react";
-import { graphql, QueryRenderer } from "react-relay";
-import environment from "../relay/environment";
+import { graphql, createFragmentContainer } from "react-relay";
 import { Link } from "react-router-dom";
 import LogoutLink from "./LogoutLink";
 
-const query = graphql`
-  query Header_Query {
-    user {
-      id
-    }
-  }
-`;
-
-function renderQuery({ error, props }) {
-  if (!error && !props) {
-    return null;
-  }
-  if (props.user) {
-    return (
+function Header(props) {
+  const links = props.user ? (
+    <li>
+      <LogoutLink />
+    </li>
+  ) : (
+    <>
       <li>
-        <LogoutLink />
+        <Link to="/signup">Sign Up</Link>
       </li>
-    );
-  } else {
-    return (
-      <>
-        <li>
-          <Link to="/signup">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      </>
-    );
-  }
-}
-
-function Header() {
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+    </>
+  );
   return (
     <div className="row">
       <nav className="col">
@@ -45,18 +26,17 @@ function Header() {
           <Link to="/" className="brand-logo left">
             TUMO
           </Link>
-          <ul className="right">
-            <QueryRenderer
-              environment={environment}
-              query={query}
-              variables={{}}
-              render={renderQuery}
-            />
-          </ul>
+          <ul className="right">{links}</ul>
         </div>
       </nav>
     </div>
   );
 }
 
-export default Header;
+export default createFragmentContainer(Header, {
+  user: graphql`
+    fragment Header_user on UserType {
+      id
+    }
+  `,
+});

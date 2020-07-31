@@ -14,33 +14,32 @@ const mutation = graphql`
 
 function LoginForm() {
   const [errors, setErrors] = useState([]);
-  const onSubmit = useCallback(
-    ({ email, password }) => {
-      commitMutation(environment, {
-        mutation,
-        variables: {
-          email,
-          password,
-        },
-        onCompleted: (response, errors) => {
-          if (errors) {
-            setErrors(errors.map((e) => e.message));
-          } else {
-            setErrors([]);
-          }
-        },
-        updater: (store, data) => {
+  const onSubmit = ({ email, password }) => {
+    commitMutation(environment, {
+      mutation,
+      variables: {
+        email,
+        password,
+      },
+      onCompleted: (response, errors) => {
+        if (errors) {
+          setErrors(errors.map((e) => e.message));
+        } else {
+          setErrors([]);
+        }
+      },
+      updater: (store, data) => {
+        //@ts-ignore
+        const { login } = data;
+        if (login) {
           const user = store
             .getRoot()
             .getOrCreateLinkedRecord("user", "UserType");
-          //@ts-ignore
-          const { id } = data.login;
-          user.setValue(id, "id");
-        },
-      });
-    },
-    [errors]
-  );
+          user.setValue(login.id, "id");
+        }
+      },
+    });
+  };
   return (
     <div>
       <h3>Login</h3>

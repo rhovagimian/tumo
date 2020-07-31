@@ -7,41 +7,39 @@ import environment from "../relay/environment";
 const mutation = graphql`
   mutation SignupForm_Mutation($email: String, $password: String) {
     signup(email: $email, password: $password) {
-      id
+      ...Header_user
     }
   }
 `;
 
 function SignupForm() {
   const [errors, setErrors] = useState([]);
-  const onSubmit = useCallback(
-    ({ email, password }) => {
-      commitMutation(environment, {
-        mutation,
-        variables: {
-          email,
-          password,
-        },
-        onCompleted: (response, errors) => {
-          if (errors) {
-            setErrors(errors.map((e) => e.message));
-          } else {
-            setErrors([]);
-          }
-        },
-        updater: (store, data) => {
+  const onSubmit = ({ email, password }) => {
+    commitMutation(environment, {
+      mutation,
+      variables: {
+        email,
+        password,
+      },
+      onCompleted: (response, errors) => {
+        if (errors) {
+          setErrors(errors.map((e) => e.message));
+        } else {
+          setErrors([]);
+        }
+      },
+      updater: (store, data) => {
+        //@ts-ignore
+        const { signup } = data;
+        if (signup) {
           const user = store
             .getRoot()
             .getOrCreateLinkedRecord("user", "UserType");
-          //@ts-ignore
-          console.log(data);
-          const { id } = data.signup;
-          user.setValue(id, "id");
-        },
-      });
-    },
-    [errors]
-  );
+          user.setValue(signup.id, "id");
+        }
+      },
+    });
+  };
   return (
     <div>
       <h3>Sign Up</h3>

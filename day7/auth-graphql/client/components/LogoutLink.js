@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 const mutation = graphql`
   mutation LogoutLink_Mutation {
     logout {
-      id
+      ...Header_user
     }
   }
 `;
@@ -21,12 +21,9 @@ function LogoutLink() {
       onCompleted: (response, errors) => {
         history.push("/");
       },
-      updater: (store, data) => {
-        //@ts-ignore
-        const { id } = data.logout;
-        if (id) {
-          store.delete(id);
-        }
+      updater: (store) => {
+        const user = store.getRoot().getLinkedRecord("user");
+        store.delete(user.getDataID());
       },
     });
   };
