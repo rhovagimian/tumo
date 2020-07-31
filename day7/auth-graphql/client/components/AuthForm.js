@@ -1,13 +1,16 @@
 //@ts-check
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 function AuthForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-    props.onSubmit({ email, password });
-  };
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      props.onSubmit({ email, password });
+    },
+    [email, password]
+  );
   return (
     <div className="row">
       <form className="col s6" onSubmit={onSubmit}>

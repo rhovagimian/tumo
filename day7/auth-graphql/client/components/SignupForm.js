@@ -29,6 +29,15 @@ function SignupForm() {
             setErrors([]);
           }
         },
+        updater: (store, data) => {
+          const user = store
+            .getRoot()
+            .getOrCreateLinkedRecord("user", "UserType");
+          //@ts-ignore
+          console.log(data);
+          const { id } = data.signup;
+          user.setValue(id, "id");
+        },
       });
     },
     [errors]

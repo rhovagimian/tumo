@@ -29,6 +29,14 @@ function LoginForm() {
             setErrors([]);
           }
         },
+        updater: (store, data) => {
+          const user = store
+            .getRoot()
+            .getOrCreateLinkedRecord("user", "UserType");
+          //@ts-ignore
+          const { id } = data.login;
+          user.setValue(id, "id");
+        },
       });
     },
     [errors]
