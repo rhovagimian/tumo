@@ -23,7 +23,7 @@ function LogoutLink() {
       },
       updater: (store, data) => {
         //@ts-ignore
-        const id = data.logout;
+        const { id } = data.logout;
         if (id) {
           store.delete(id);
         }
