@@ -1,7 +1,7 @@
 //@ts-check
 const graphql = require("graphql");
-const UserType = require("./UserType");
 const { GraphQLObjectType, GraphQLString } = graphql;
+const UserType = require("./UserType");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",

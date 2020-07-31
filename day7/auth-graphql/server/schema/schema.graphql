@@ -1,6 +1,6 @@
 schema {
   query: RootQueryType
-  mutation: mutation
+  mutation: Mutation
 }
 
 type RootQueryType {
@@ -12,7 +12,7 @@ type UserType {
   email: String
 }
 
-type mutation {
+type Mutation {
   signup(email: String, password: String): UserType
   logout: UserType
   login(email: String, password: String): UserType
