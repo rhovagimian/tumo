@@ -1,13 +1,36 @@
 //@ts-check
 import React from "react";
-import { graphql, createFragmentContainer } from "react-relay";
+import { graphql, createFragmentContainer, commitMutation } from "react-relay";
 import { Link } from "react-router-dom";
-import LogoutLink from "./LogoutLink";
+import environment from "../relay/environment";
+import { useHistory } from "react-router-dom";
+
+const mutation = graphql`
+  mutation Header_Mutation {
+    logout {
+      ...Header_user
+    }
+  }
+`;
 
 function Header(props) {
+  const history = useHistory();
+  const onLogout = () => {
+    commitMutation(environment, {
+      mutation,
+      variables: {},
+      onCompleted: (response, errors) => {
+        history.push("/");
+      },
+      updater: (store) => {
+        const user = store.getRoot().getLinkedRecord("user");
+        store.delete(user.getDataID());
+      },
+    });
+  };
   const links = props.user ? (
     <li>
-      <LogoutLink />
+      <a onClick={onLogout}>Logout</a>
     </li>
   ) : (
     <>
