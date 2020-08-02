@@ -1,13 +1,12 @@
 //@ts-check
 import React from "react";
-import ReactDOM from "react-dom";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
-import Dashboard from "./components/Dashboard";
+import Header from "./Header";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
+import Dashboard from "./Dashboard";
 import { graphql, QueryRenderer } from "react-relay";
-import environment from "./relay/environment";
+import environment from "../relay/environment";
 
 const query = graphql`
   query Root_Query {
@@ -57,4 +56,4 @@ function Root() {
   );
 }
 
-ReactDOM.render(<Root />, document.querySelector("#root"));
+export default Root;
