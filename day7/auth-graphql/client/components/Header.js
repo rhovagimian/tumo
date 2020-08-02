@@ -28,20 +28,25 @@ function Header(props) {
       },
     });
   };
-  const links = props.user ? (
-    <li>
-      <a onClick={onLogout}>Logout</a>
-    </li>
-  ) : (
-    <>
+  let links = null;
+  if (props.user) {
+    links = (
       <li>
-        <Link to="/signup">Sign Up</Link>
+        <a onClick={onLogout}>Logout</a>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </>
-  );
+    );
+  } else {
+    links = (
+      <>
+        <li>
+          <Link to="/signup">Sign Up</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      </>
+    );
+  }
   return (
     <div className="row">
       <nav className="col">
