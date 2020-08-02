@@ -5,14 +5,15 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
-import { QueryRenderer, graphql } from "react-relay";
-import environment from "./relay/environment";
 import Dashboard from "./components/Dashboard";
+import { graphql, QueryRenderer } from "react-relay";
+import environment from "./relay/environment";
 
 const query = graphql`
   query Root_Query {
     user {
       ...Header_user
+      ...RequireAuth_user
     }
   }
 `;
@@ -27,7 +28,7 @@ function renderQuery({ error, props }) {
       <Header user={user} />
       <Switch>
         <Route path="/dashboard">
-          <Dashboard />
+          <Dashboard user={user} />
         </Route>
         <Route path="/login">
           <LoginForm />
