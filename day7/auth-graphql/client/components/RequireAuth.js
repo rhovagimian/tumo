@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { graphql, createFragmentContainer } from "react-relay";
 import { useHistory } from "react-router-dom";
 
-export default (WrappedComponent) => {
+export default (Component) => {
   function RequireAuth(props) {
     const history = useHistory();
     useEffect(() => {
@@ -13,7 +13,7 @@ export default (WrappedComponent) => {
       }
     });
 
-    return <WrappedComponent {...props} />;
+    return <Component {...props} />;
   }
 
   return createFragmentContainer(RequireAuth, {
