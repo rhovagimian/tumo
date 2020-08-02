@@ -3,6 +3,7 @@ import React, { useState, useCallback } from "react";
 import AuthForm from "./AuthForm";
 import { graphql, commitMutation } from "react-relay";
 import environment from "../relay/environment";
+import { useHistory } from "react-router-dom";
 
 const mutation = graphql`
   mutation LoginForm_Mutation($email: String, $password: String) {
@@ -14,6 +15,7 @@ const mutation = graphql`
 
 function LoginForm() {
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
   const onSubmit = ({ email, password }) => {
     commitMutation(environment, {
       mutation,
@@ -26,6 +28,10 @@ function LoginForm() {
           setErrors(errors.map((e) => e.message));
         } else {
           setErrors([]);
+        }
+        //@ts-ignore
+        if (response.login && !errors) {
+          history.push("/dashboard");
         }
       },
       updater: (store, data) => {
