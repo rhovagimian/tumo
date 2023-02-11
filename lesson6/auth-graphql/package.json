@@ -40,7 +40,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-relay": "^10.0.1",
     "html-webpack-plugin": "^4.3.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.20",
     "relay-compiler": "^10.0.1",
     "webpack": "^5.44.0",
     "webpack-dev-middleware": "^3.7.2"
